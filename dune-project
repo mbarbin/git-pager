@@ -34,8 +34,6 @@
  (depends
   (ocaml
    (>= 5.2))
-  (git-pager
-   (= :version))
   (base
    (and
     (>= v0.17)
@@ -49,7 +47,9 @@
   (fpath
    (>= 0.7.3))
   (fpath-base
-   (>= 0.2.0))
+   (>= 0.2.2))
+  (git-pager
+   (= :version))
   (pp
    (>= 2.0.0))
   (pplumbing
@@ -118,10 +118,6 @@
  (depends
   (ocaml
    (>= 5.2))
-  (git-pager
-   (= :version))
-  (git-pager-tests
-   (= :version))
   (ocamlformat
    (and
     :with-dev-setup
@@ -139,7 +135,11 @@
   (fpath
    (>= 0.7.3))
   (fpath-base
-   (>= 0.2.0))
+   (>= 0.2.2))
+  (git-pager
+   (= :version))
+  (git-pager-tests
+   (= :version))
   (pp
    (>= 2.0.0))
   (pplumbing
