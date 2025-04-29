@@ -36,13 +36,6 @@ let main =
             This argument is meant to test what happens when a pager is closed, with \
             pending writers that are not done writing to it."
      and+ loop = Arg.flag [ "loop" ] ~doc:"Supersedes --steps and loop forever" in
-     let () =
-       if steps < 1
-       then
-         Err.raise
-           ~exit_code:Err.Exit_code.cli_error
-           [ Pp.text "The number of steps must be strictly positive." ]
-     in
      Git_pager.run ~f:(fun git_pager ->
        let write_end = Git_pager.write_end git_pager in
        With_return.with_return (fun { return } ->
@@ -55,7 +48,10 @@ let main =
            let index = !index in
            Option.iter raise_after_n_steps ~f:(fun n ->
              if index >= n then failwith (Printf.sprintf "Raised after %d steps!" index));
-           if (not loop) && index >= steps then return ();
+           if (not loop) && index >= steps
+           then
+             return () [@coverage off]
+             (* coverage off is due to undesirable out-edge detection. *);
            ()
          done;
          ())))
