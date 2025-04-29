@@ -40,10 +40,16 @@
    (and
     (>= v0.17)
     (< v0.18)))
+  (cmdlang
+   (>= 0.0.9))
   (expect_test_helpers_core
    (and
     (>= v0.17)
     (< v0.18)))
+  (fpath
+   (>= 0.7.3))
+  (fpath-base
+   (>= 0.2.0))
   (pp
    (>= 2.0.0))
   (pplumbing
@@ -87,10 +93,18 @@
     (< v0.18)))
   (ppxlib
    (>= 0.33))
+  (shexp
+   (and
+    (>= v0.17)
+    (< v0.18)))
   (stdio
    (and
     (>= v0.17)
     (< v0.18)))
+  (vcs
+   (>= 0.0.7))
+  (vcs-git-blocking
+   (>= 0.0.7))
   (sherlodoc
    (and
     :with-doc
@@ -122,6 +136,10 @@
    (and
     (>= v0.17)
     (< v0.18)))
+  (fpath
+   (>= 0.7.3))
+  (fpath-base
+   (>= 0.2.0))
   (pp
    (>= 2.0.0))
   (pplumbing
@@ -165,10 +183,18 @@
     (< v0.18)))
   (ppxlib
    (>= 0.33))
+  (shexp
+   (and
+    (>= v0.17)
+    (< v0.18)))
   (stdio
    (and
     (>= v0.17)
     (< v0.18)))
+  (vcs
+   (>= 0.0.7))
+  (vcs-git-blocking
+   (>= 0.0.7))
   (sherlodoc
    (and
     :with-doc
