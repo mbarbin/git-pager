@@ -114,10 +114,12 @@ let rec waitpid_non_intr pid =
   | Unix.Unix_error (EINTR, _, _) -> waitpid_non_intr pid
 ;;
 
+let force_stdout_isatty_test = ref false
+
 let run ~f =
   let git_pager = get_git_pager () in
   let output_kind =
-    if Unix.isatty Unix.stdout
+    if Unix.isatty Unix.stdout || !force_stdout_isatty_test
     then if String.equal git_pager "cat" then `Tty else `Pager
     else `Other
   in
@@ -143,9 +145,14 @@ let run ~f =
     in
     let pager_in, pager_out = Unix.pipe ~cloexec:true () in
     let process =
+      let prog, args =
+        match String.split_on_char ' ' git_pager with
+        | [] | [ _ ] -> git_pager, [| git_pager |]
+        | prog :: _ as args -> prog, Array.of_list args
+      in
       Unix.create_process_env
-        ~prog:git_pager
-        ~args:[| git_pager |]
+        ~prog
+        ~args
         ~env:process_env
         ~stdin:pager_in
         ~stdout:Unix.stdout
@@ -203,3 +210,7 @@ let run ~f =
              ++ Pp.text "."
            ])
 ;;
+
+module Private = struct
+  let force_stdout_isatty_test = force_stdout_isatty_test
+end

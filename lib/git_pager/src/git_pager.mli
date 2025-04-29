@@ -68,3 +68,18 @@ val should_enable_color : t -> bool
 
     See also {!should_enable_color}. *)
 val output_kind : t -> [ `Tty | `Pager | `Other ]
+
+(** {1 Private}
+
+    This module is exported to be used by libraries with strong ties to
+    [git-pager] and by tests. Its signature may change in breaking ways at any
+    time without prior notice, and outside of the guidelines set by semver.
+
+    Do not use. *)
+
+module Private : sig
+  (** So that we can exercise the pager logic in a test where stdout is never
+      a tty, we export this reference to force the module behavior as if stdout
+      was a tty. *)
+  val force_stdout_isatty_test : bool ref
+end

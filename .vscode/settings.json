@@ -1,7 +1,9 @@
 {
     "cSpell.words": [
+        "isatty",
         "janestreet",
         "odoc",
-        "opam"
+        "opam",
+        "SIGPIPE"
     ]
 }

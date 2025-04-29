@@ -1,0 +1,8 @@
+(cram
+ (package git-pager-tests)
+ (deps
+  (package git-pager)
+  (package vcs-cli)
+  %{bin:git-pager}
+  (glob_files *.exe)
+  (glob_files *.sexp)))

@@ -4,7 +4,7 @@
 (*  SPDX-License-Identifier: MIT                                                 *)
 (*********************************************************************************)
 
-let git_diff ~repo_root ~(git_pager : Git_pager.t) ~base ~tip ?(paths = []) () =
+let git_diff ~repo_root ~(git_pager : Git_pager.t) ~base ~tip =
   let process =
     Shexp_process.call_exit_status
       (List.concat
@@ -13,10 +13,7 @@ let git_diff ~repo_root ~(git_pager : Git_pager.t) ~base ~tip ?(paths = []) () =
             | `Auto -> []
             | `Always -> [ "--color=always" ]
             | `Never -> [ "--color=never" ])
-         ; [ Printf.sprintf "%s..%s" (Vcs.Rev.to_string base) (Vcs.Rev.to_string tip) ]
-         ; (match paths with
-            | [] -> []
-            | _ :: _ -> "--" :: List.map ~f:Vcs.Path_in_repo.to_string paths)
+         ; [ Printf.sprintf "%s..%s" base tip ]
          ])
   in
   try
@@ -48,15 +45,19 @@ let main =
   let rev name =
     Arg.named
       [ name ]
-      (Param.validated_string (module Vcs.Rev))
+      Param.string
       ~docv:"REV"
       ~doc:(Printf.sprintf "The %s revision for the diff" name)
   in
   Command.make
     ~summary:"Send the output of git diff to the git pager"
     (let+ () = Log_cli.set_config ()
+     and+ () = Common_helpers.force_stdout_isatty_test
      and+ base = rev "base"
-     and+ tip = rev "tip" in
+     and+ tip = rev "tip"
+     and+ loop =
+       Arg.flag [ "loop" ] ~doc:"Loop and keep on writing the diff to the pager."
+     in
      let cwd = Unix.getcwd () |> Absolute_path.v in
      let vcs = Vcs_git_blocking.create () in
      let repo_root =
@@ -69,9 +70,9 @@ let main =
      Git_pager.run ~f:(fun git_pager ->
        With_return.with_return (fun { return } ->
          while true do
-           Unix.sleepf 0.5;
-           match git_diff ~repo_root ~git_pager ~base ~tip () with
-           | `Ok -> ()
-           | `Quit -> return ()
+           (match git_diff ~repo_root ~git_pager ~base ~tip with
+            | `Ok -> ()
+            | `Quit -> return ());
+           if loop then Unix.sleepf 0.5 else return ()
          done)))
 ;;

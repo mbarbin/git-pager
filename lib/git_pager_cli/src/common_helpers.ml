@@ -4,12 +4,8 @@
 (*  SPDX-License-Identifier: MIT                                                 *)
 (*********************************************************************************)
 
-let main =
-  Command.group
-    ~summary:"git-pager"
-    [ "diff", Cmd__diff.main
-    ; "pager", Cmd__pager.main
-    ; "print-settings", Cmd__print_settings.main
-    ; "run", Cmd__run.main
-    ]
+let force_stdout_isatty_test =
+  let open Command.Std in
+  let+ value = Arg.flag [ "force-stdout-isatty" ] ~doc:"Behave as if stdout was a tty" in
+  if value then Git_pager.Private.force_stdout_isatty_test := true
 ;;
