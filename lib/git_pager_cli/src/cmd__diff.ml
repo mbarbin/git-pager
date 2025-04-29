@@ -1,3 +1,9 @@
+(*********************************************************************************)
+(*  Git_pager - Run a Git pager to display diffs and other custom outputs        *)
+(*  SPDX-FileCopyrightText: 2024-2025 Mathieu Barbin <mathieu.barbin@gmail.com>  *)
+(*  SPDX-License-Identifier: MIT                                                 *)
+(*********************************************************************************)
+
 let git_diff ~repo_root ~(git_pager : Git_pager.t) ~base ~tip ?(paths = []) () =
   let process =
     Shexp_process.call_exit_status

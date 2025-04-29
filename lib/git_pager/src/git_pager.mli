@@ -1,3 +1,9 @@
+(*_********************************************************************************)
+(*_  Git_pager - Run a Git pager to display diffs and other custom outputs        *)
+(*_  SPDX-FileCopyrightText: 2024-2025 Mathieu Barbin <mathieu.barbin@gmail.com>  *)
+(*_  SPDX-License-Identifier: MIT                                                 *)
+(*_********************************************************************************)
+
 (** Run a Git pager to display diffs and other custom outputs.
 
     The pager used is the one configured by Git. If [GIT_PAGER=cat], the pager
