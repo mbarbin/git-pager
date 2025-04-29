@@ -2,11 +2,11 @@
 
 dirs=(
     # Add new directories below:
-    "bin"
+    "example"
     "lib/git_pager/src"
     "lib/git_pager/test"
-    "lib/git_pager_cli/src"
-    "lib/git_pager_cli/test"
+    "test/git_pager_cli/bin"
+    "test/git_pager_cli/src"
 )
 
 for dir in "${dirs[@]}"; do
