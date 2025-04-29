@@ -103,6 +103,8 @@
     (< v0.18)))
   (vcs
    (>= 0.0.11))
+  (vcs-cli
+   (>= 0.0.11))
   (vcs-git-blocking
    (>= 0.0.11))
   (sherlodoc
@@ -126,6 +128,10 @@
    (and
     (>= v0.17)
     (< v0.18)))
+  (bisect_ppx
+   (and
+    :with-dev-setup
+    (>= 2.8.3)))
   (cmdlang
    (>= 0.0.9))
   (expect_test_helpers_core
@@ -192,6 +198,8 @@
     (>= v0.17)
     (< v0.18)))
   (vcs
+   (>= 0.0.11))
+  (vcs-cli
    (>= 0.0.11))
   (vcs-git-blocking
    (>= 0.0.11))
