@@ -1,0 +1,8 @@
+(library
+ (name git_pager)
+ (public_name git-pager)
+ (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a)
+ (libraries pp pplumbing.err pplumbing.pp-tty unix)
+ (lint
+  (pps ppx_js_style -check-doc-comments))
+ (preprocess no_preprocessing))
