@@ -22,8 +22,12 @@ let should_enable_color t =
   | `Never -> false
   | `Auto ->
     (match output_kind t with
-     | `Tty | `Pager -> true
-     | `Other -> false)
+     | `Tty -> true
+     | `Other -> false
+     | `Pager ->
+       (* That case is unreachable by design. *)
+       true
+       [@coverage off])
 ;;
 
 module Process_status = struct
@@ -35,8 +39,8 @@ module Process_status = struct
   let to_string t =
     match t with
     | WEXITED i -> Printf.sprintf "Exited %d" i
-    | WSIGNALED i -> Printf.sprintf "Signaled %d" i
-    | WSTOPPED i -> Printf.sprintf "Stopped %d" i
+    | WSIGNALED i -> Printf.sprintf "Signaled %d" i [@coverage off]
+    | WSTOPPED i -> Printf.sprintf "Stopped %d" i [@coverage off]
   ;;
 end
 
@@ -119,7 +123,7 @@ let force_stdout_isatty_test = ref false
 let run ~f =
   let git_pager = get_git_pager () in
   let output_kind =
-    if Unix.isatty Unix.stdout || !force_stdout_isatty_test
+    if (Unix.isatty Unix.stdout [@coverage off]) || !force_stdout_isatty_test
     then if String.equal git_pager "cat" then `Tty else `Pager
     else `Other
   in
@@ -147,7 +151,8 @@ let run ~f =
     let process =
       let prog, args =
         match String.split_on_char ' ' git_pager with
-        | [] | [ _ ] -> git_pager, [| git_pager |]
+        | [] -> assert false (* By specification of [String.split_on_char]. *)
+        | [ _ ] -> git_pager, [| git_pager |]
         | prog :: _ as args -> prog, Array.of_list args
       in
       Unix.create_process_env
@@ -184,7 +189,7 @@ let run ~f =
          Pp.O.
            [ Pp.text "Call to "
              ++ Pp_tty.kwd (module String_tty) "GIT_PAGER"
-             ++ Pp.text "raised."
+             ++ Pp.text " raised."
            ; Pp.text "Writer Status: "
              ++ (match result with
                | Ok _ -> Pp.text "Ok"
@@ -193,13 +198,14 @@ let run ~f =
            ; Pp.text "Pager Exception: "
              ++ Pp_tty.id (module Printexc) finally_exn
              ++ Pp.text "."
-           ]
+           ] [@coverage off]
      | (WEXITED _ | WSIGNALED _ | WSTOPPED _) as process_status ->
+       (* This line is covered but off due to unvisitable out-edge point. *)
        Err.raise
          Pp.O.
            [ Pp.text "Call to "
              ++ Pp_tty.kwd (module String_tty) "GIT_PAGER"
-             ++ Pp.text "failed."
+             ++ Pp.text " failed."
            ; Pp.text "Writer Status: "
              ++ (match result with
                | Ok _ -> Pp.text "Ok"
@@ -208,7 +214,7 @@ let run ~f =
            ; Pp.text "Pager Exit Status: "
              ++ Pp_tty.id (module Process_status) process_status
              ++ Pp.text "."
-           ])
+           ] [@coverage off])
 ;;
 
 module Private = struct

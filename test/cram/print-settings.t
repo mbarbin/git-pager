@@ -52,6 +52,9 @@ are correctly colored.
   $ git-pager print-settings --color=auto --force-stdout-isatty
   ((git_color_mode Always) (should_enable_color true) (output_kind Pager))
 
+  $ GIT_PAGER=cat git-pager print-settings --color=auto --force-stdout-isatty
+  ((git_color_mode Auto) (should_enable_color true) (output_kind Tty))
+
   $ git-pager print-settings --color=always
   ((git_color_mode Always) (should_enable_color true) (output_kind Other))
 

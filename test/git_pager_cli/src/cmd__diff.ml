@@ -4,11 +4,12 @@
 (*  SPDX-License-Identifier: MIT                                                 *)
 (*********************************************************************************)
 
-let git_diff ~repo_root ~(git_pager : Git_pager.t) ~base ~tip =
+let git_diff ~repo_root ~(git_pager : Git_pager.t) ~base ~tip ~exit_code =
   let process =
     Shexp_process.call_exit_status
       (List.concat
          [ [ "git"; "diff" ]
+         ; (if exit_code then [ "--exit-code" ] else [])
          ; (match Git_pager.git_color_mode git_pager with
             | `Auto -> []
             | `Always -> [ "--color=always" ]
@@ -28,7 +29,9 @@ let git_diff ~repo_root ~(git_pager : Git_pager.t) ~base ~tip =
     match result with
     | Exited i -> if i <> 0 then failwith (Printf.sprintf "Exited %d" i) else `Ok
     | Signaled i ->
-      if i <> Stdlib.Sys.sigpipe then failwith (Printf.sprintf "Signaled %d" i) else `Quit
+      if i <> Stdlib.Sys.sigpipe
+      then failwith (Printf.sprintf "Signaled %d" i) [@coverage off]
+      else `Quit
   with
   | exn ->
     Err.raise
@@ -53,6 +56,8 @@ let main =
     ~summary:"Send the output of git diff to the git pager"
     (let+ () = Log_cli.set_config ()
      and+ () = Common_helpers.force_stdout_isatty_test
+     and+ exit_code =
+       Arg.flag [ "exit-code" ] ~doc:"Supply the flag $(b,--exit-code) to git diff"
      and+ base = rev "base"
      and+ tip = rev "tip"
      and+ loop =
@@ -66,13 +71,20 @@ let main =
        | None ->
          Err.raise
            [ Pp.text "This command requires to be run from within a Git repository." ]
+         [@coverage off]
      in
      Git_pager.run ~f:(fun git_pager ->
        With_return.with_return (fun { return } ->
          while true do
-           (match git_diff ~repo_root ~git_pager ~base ~tip with
+           (match git_diff ~repo_root ~git_pager ~base ~tip ~exit_code with
             | `Ok -> ()
-            | `Quit -> return ());
-           if loop then Unix.sleepf 0.5 else return ()
+            | `Quit ->
+              (* This line is covered but off due to unvisitable out-edge point. *)
+              return () [@coverage off]);
+           if loop
+           then Unix.sleepf 0.5
+           else
+             (* This line is covered but off due to unvisitable out-edge point. *)
+             return () [@coverage off]
          done)))
 ;;

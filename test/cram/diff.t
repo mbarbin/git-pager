@@ -21,7 +21,7 @@ Let's add some files to the tree.
   $ ocaml-vcs add hello
   $ rev1=$(ocaml-vcs commit -m "Greetings")
 
-The pager works when stdout it piped to another process.
+The library works when stdout it piped to another process.
 
   $ git-pager diff --base=${rev0} --tip=${rev1} | cat -v
   diff --git a/hello b/hello
@@ -154,3 +154,19 @@ attempting to write a pager that has already closed.
   diff --git a/hello b/hello
   index 980a0d5..845ae1b 100644
   --- a/hello
+
+Let's monitor the behavior when the git process exit with non zero.
+
+  $ export GIT_PAGER=cat
+
+  $ git-pager diff --base=${rev0} --tip=${rev1} --force-stdout-isatty --exit-code
+  diff --git a/hello b/hello
+  index 980a0d5..845ae1b 100644
+  --- a/hello
+  +++ b/hello
+  @@ -1 +1,2 @@
+   Hello World!
+  +Nice to see you.
+  Error: Running process [git diff] failed.
+  (Failure "Exited 1")
+  [123]

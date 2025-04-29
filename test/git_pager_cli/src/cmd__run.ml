@@ -50,9 +50,8 @@ let main =
              if index >= n then failwith (Printf.sprintf "Raised after %d steps!" index));
            if (not loop) && index >= steps
            then
+             (* This line is covered but off due to unvisitable out-edge point. *)
              return () [@coverage off]
-             (* coverage off is due to undesirable out-edge detection. *);
-           ()
          done;
          ())))
 ;;

@@ -59,6 +59,22 @@ properly.
   2
   Internal Error: Failure("Raised after 2 steps!")
 
+Here we simulate a pager that exits with a non zero code.
+
+  $ export GIT_PAGER='git-pager pager --exit-code=42'
+
+  $ git-pager run --force-stdout-isatty
+  Hello from the test pager!
+  1
+  2
+  3
+  4
+  5
+  Error: Call to [GIT_PAGER] failed.
+  Writer Status: Ok.
+  Pager Exit Status: [Exited 42].
+  [123]
+
 Now we simulate exit condition of the pager, while the writer hasn't finished
 writing its output.
 
