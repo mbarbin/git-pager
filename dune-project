@@ -26,7 +26,7 @@
   (pp
    (>= 2.0.0))
   (pplumbing
-   (>= 0.0.9))))
+   (>= 0.0.11))))
 
 (package
  (name git-pager-tests)
@@ -53,7 +53,7 @@
   (pp
    (>= 2.0.0))
   (pplumbing
-   (>= 0.0.9))
+   (>= 0.0.11))
   (ppx_compare
    (and
     (>= v0.17)
@@ -102,9 +102,9 @@
     (>= v0.17)
     (< v0.18)))
   (vcs
-   (>= 0.0.7))
+   (>= 0.0.11))
   (vcs-git-blocking
-   (>= 0.0.7))
+   (>= 0.0.11))
   (sherlodoc
    (and
     :with-doc
@@ -143,7 +143,7 @@
   (pp
    (>= 2.0.0))
   (pplumbing
-   (>= 0.0.9))
+   (>= 0.0.11))
   (ppx_compare
    (and
     (>= v0.17)
@@ -192,9 +192,9 @@
     (>= v0.17)
     (< v0.18)))
   (vcs
-   (>= 0.0.7))
+   (>= 0.0.11))
   (vcs-git-blocking
-   (>= 0.0.7))
+   (>= 0.0.11))
   (sherlodoc
    (and
     :with-doc
