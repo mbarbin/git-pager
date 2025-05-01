@@ -105,7 +105,7 @@
    (>= 0.0.11))
   (vcs-cli
    (>= 0.0.11))
-  (vcs-git-blocking
+  (vcs-git-unix
    (>= 0.0.11))
   (sherlodoc
    (and
@@ -201,7 +201,7 @@
    (>= 0.0.11))
   (vcs-cli
    (>= 0.0.11))
-  (vcs-git-blocking
+  (vcs-git-unix
    (>= 0.0.11))
   (sherlodoc
    (and

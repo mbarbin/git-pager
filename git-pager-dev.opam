@@ -36,7 +36,7 @@ depends: [
   "stdio" {>= "v0.17" & < "v0.18"}
   "vcs" {>= "0.0.11"}
   "vcs-cli" {>= "0.0.11"}
-  "vcs-git-blocking" {>= "0.0.11"}
+  "vcs-git-unix" {>= "0.0.11"}
   "sherlodoc" {with-doc & >= "0.2"}
   "odoc" {with-doc}
 ]
