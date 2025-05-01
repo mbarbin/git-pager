@@ -30,7 +30,7 @@
   stdio
   unix
   vcs
-  vcs-git-blocking)
+  vcs-git-unix)
  (instrumentation
   (backend bisect_ppx))
  (lint
