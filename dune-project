@@ -26,7 +26,7 @@
   (pp
    (>= 2.0.0))
   (pplumbing
-   (>= 0.0.11))))
+   (>= 0.0.12))))
 
 (package
  (name git-pager-tests)
@@ -53,7 +53,7 @@
   (pp
    (>= 2.0.0))
   (pplumbing
-   (>= 0.0.11))
+   (>= 0.0.12))
   (ppx_compare
    (and
     (>= v0.17)
@@ -149,7 +149,7 @@
   (pp
    (>= 2.0.0))
   (pplumbing
-   (>= 0.0.11))
+   (>= 0.0.12))
   (ppx_compare
    (and
     (>= v0.17)
