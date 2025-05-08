@@ -197,7 +197,6 @@ let run ~f =
              ++ Pp.text "."
            ] [@coverage off]
      | (WEXITED _ | WSIGNALED _ | WSTOPPED _) as process_status ->
-       (* This line is covered but off due to unvisitable out-edge point. *)
        Err.raise
          Pp.O.
            [ Pp.text "Call to "
@@ -211,7 +210,7 @@ let run ~f =
            ; Pp.text "Pager Exit Status: "
              ++ Pp_tty.id (module Process_status) process_status
              ++ Pp.text "."
-           ] [@coverage off])
+           ])
 ;;
 
 module Private = struct

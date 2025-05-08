@@ -75,6 +75,15 @@ Here we simulate a pager that exits with a non zero code.
   Pager Exit Status: [Exited 42].
   [123]
 
+  $ git-pager run --force-stdout-isatty --raise-after-n-steps=2
+  Hello from the test pager!
+  1
+  2
+  Error: Call to [GIT_PAGER] failed.
+  Writer Status: Raised [Failure("Raised after 2 steps!")].
+  Pager Exit Status: [Exited 42].
+  [123]
+
 Now we simulate exit condition of the pager, while the writer hasn't finished
 writing its output.
 
