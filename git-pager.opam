@@ -9,7 +9,7 @@ doc: "https://mbarbin.github.io/git-pager/"
 bug-reports: "https://github.com/mbarbin/git-pager/issues"
 depends: [
   "dune" {>= "3.17"}
-  "ocaml" {>= "5.2"}
+  "ocaml" {>= "4.14"}
   "pp" {>= "2.0.0"}
   "pplumbing" {>= "0.0.13"}
   "odoc" {with-doc}

@@ -22,7 +22,7 @@
  (synopsis "Run a Git pager to display diffs and other custom outputs")
  (depends
   (ocaml
-   (>= 5.2))
+   (>= 4.14))
   (pp
    (>= 2.0.0))
   (pplumbing
