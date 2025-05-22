@@ -22,11 +22,11 @@
  (synopsis "Run a Git pager to display diffs and other custom outputs")
  (depends
   (ocaml
-   (>= 5.2))
+   (>= 4.14))
   (pp
    (>= 2.0.0))
   (pplumbing
-   (>= 0.0.12))))
+   (>= 0.0.13))))
 
 (package
  (name git-pager-tests)
@@ -53,7 +53,7 @@
   (pp
    (>= 2.0.0))
   (pplumbing
-   (>= 0.0.12))
+   (>= 0.0.13))
   (ppx_compare
    (and
     (>= v0.17)
@@ -149,7 +149,7 @@
   (pp
    (>= 2.0.0))
   (pplumbing
-   (>= 0.0.12))
+   (>= 0.0.13))
   (ppx_compare
    (and
     (>= v0.17)
