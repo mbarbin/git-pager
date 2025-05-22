@@ -39,7 +39,7 @@ let git_diff ~repo_root ~(git_pager : Git_pager.t) ~base ~tip ~exit_code =
         [ Pp.text "Running process "
           ++ Pp_tty.kwd (module String) "git diff"
           ++ Pp.text " failed."
-        ; Err.sexp (Exn.sexp_of_t exn)
+        ; Err.exn exn
         ]
 ;;
 
