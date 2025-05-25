@@ -1,8 +1,8 @@
 First we need to setup a repo in a way that satisfies the test environment. This
 includes specifics required by the GitHub Actions environment.
 
-  $ ocaml-vcs init -q .
-  $ ocaml-vcs set-user-config --user.name "Test User" --user.email "test@example.com"
+  $ volgo-vcs init -q .
+  $ volgo-vcs set-user-config --user.name "Test User" --user.email "test@example.com"
 
 Let's add some files to the tree.
 
@@ -10,16 +10,16 @@ Let's add some files to the tree.
   > Hello World!
   > EOF
 
-  $ ocaml-vcs add hello
-  $ rev0=$(ocaml-vcs commit -m "Initial commit")
+  $ volgo-vcs add hello
+  $ rev0=$(volgo-vcs commit -m "Initial commit")
 
   $ cat > hello << EOF
   > Hello World!
   > Nice to see you.
   > EOF
 
-  $ ocaml-vcs add hello
-  $ rev1=$(ocaml-vcs commit -m "Greetings")
+  $ volgo-vcs add hello
+  $ rev1=$(volgo-vcs commit -m "Greetings")
 
 The library works when stdout it piped to another process.
 

@@ -2,7 +2,7 @@
  (package git-pager-tests)
  (deps
   (package git-pager)
-  (package vcs-cli)
+  (package volgo-vcs)
   %{bin:git-pager}
   (glob_files *.exe)
   (glob_files *.sexp)))
