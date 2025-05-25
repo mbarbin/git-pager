@@ -4,7 +4,7 @@
 
 ### Changed
 
-- Update from `vcs` to `volgo` library (@mbarbin).
+- Update from `vcs` to `volgo` library (#3, @mbarbin).
 - Enabled build with OCaml 4.14 (#2, @mbarbin).
 
 ### Deprecated
