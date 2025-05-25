@@ -64,7 +64,7 @@ let main =
        Arg.flag [ "loop" ] ~doc:"Loop and keep on writing the diff to the pager."
      in
      let cwd = Unix.getcwd () |> Absolute_path.v in
-     let vcs = Vcs_git_unix.create () in
+     let vcs = Volgo_git_unix.create () in
      let repo_root =
        match Vcs.find_enclosing_git_repo_root vcs ~from:cwd with
        | Some repo_root -> repo_root

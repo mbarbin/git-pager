@@ -14,7 +14,9 @@
   -open
   Stdio
   -open
-  Cmdlang)
+  Cmdlang
+  -open
+  Volgo)
  (libraries
   base
   cmdlang
@@ -29,8 +31,8 @@
   shexp.process
   stdio
   unix
-  vcs
-  vcs-git-unix)
+  volgo
+  volgo-git-unix)
  (instrumentation
   (backend bisect_ppx))
  (lint

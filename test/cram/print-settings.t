@@ -15,8 +15,8 @@ variable.
 
 Let's now initiate a Git repo.
 
-  $ ocaml-vcs init -q .
-  $ ocaml-vcs set-user-config --user.name "Test User" --user.email "test@example.com"
+  $ volgo-vcs init -q .
+  $ volgo-vcs set-user-config --user.name "Test User" --user.email "test@example.com"
 
 Let's try again:
 
