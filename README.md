@@ -9,6 +9,8 @@ It is particularly useful for tools that integrate with Git and need to display 
 
 ## Hello Pager
 
+Here is a short example using the `Git_pager`. It will run a pager according to your git config, and allows you to access an `Out_channel.t` where you can write the output to:
+
 ```ocaml
 let () =
   Git_pager.run ~f:(fun pager ->

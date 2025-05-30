@@ -1,11 +1,14 @@
 description: """\
 
-Git_pager is a small library for running a Git pager to display diffs
-and other custom outputs in the terminal.
+[pageantty] provides utility libraries for running pagers in the
+terminal.
 
-It is particularly useful for tools that integrate with Git and need
-to display output exceeding one screen, while respecting user color
-preferences and Git's configuration.
+It includes [Git_pager], a small one-module library for displaying
+Git diffs and other custom outputs in a terminal pager.
+
+This is useful for tools that integrate with Git and need to display
+output exceeding one screen, while respecting user color preferences
+and Git's configuration.
 
 """
 tags: [ "git" "pager" ]

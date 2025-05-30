@@ -29,8 +29,7 @@
 
 (package
  (name pageantty)
- (synopsis
-  "Run a pager to display diffs and other custom outputs in the terminal")
+ (synopsis "Run a pager to display diffs and other outputs in the terminal")
  (depends
   (ocaml
    (>= 4.14))
