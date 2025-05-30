@@ -16,3 +16,11 @@ let () =
     Printf.fprintf write_end "Hello, pager!\n")
 ;;
 ```
+
+## Published named
+
+To publish this project to opam we're using a packaging naming scheme where `pageantty` is a namespacing prefix.
+
+`pageantty` (pronounced: "pageant-T-Y", like "pageant" + the letters "T" and "Y", IPA: /ˈpædʒənt ti waɪ/).
+
+The current `Git_pager` module is available as the main library of the `pageantty.git-pager` sub-package.
