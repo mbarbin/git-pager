@@ -1,7 +1,7 @@
 (cram
- (package git-pager-tests)
+ (package pageantty-tests)
  (deps
-  (package git-pager)
+  (package pageantty)
   (package volgo-vcs)
   %{bin:git-pager}
   (glob_files *.exe)

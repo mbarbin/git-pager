@@ -1,6 +1,6 @@
 (lang dune 3.17)
 
-(name git-pager)
+(name pageantty)
 
 (generate_opam_files)
 
@@ -28,8 +28,9 @@
 (implicit_transitive_deps true)
 
 (package
- (name git-pager)
- (synopsis "Run a Git pager to display diffs and other custom outputs")
+ (name pageantty)
+ (synopsis
+  "Run a pager to display diffs and other custom outputs in the terminal")
  (depends
   (ocaml
    (>= 4.14))
@@ -39,8 +40,8 @@
    (>= 0.0.13))))
 
 (package
- (name git-pager-tests)
- (synopsis "Tests for git-pager")
+ (name pageantty-tests)
+ (synopsis "Tests for pageantty")
  (depends
   (ocaml
    (>= 5.2))
@@ -58,7 +59,7 @@
    (>= 0.7.3))
   (fpath-base
    (>= 0.2.2))
-  (git-pager
+  (pageantty
    (= :version))
   (pp
    (>= 2.0.0))
@@ -123,7 +124,7 @@
     (>= 0.2)))))
 
 (package
- (name git-pager-dev)
+ (name pageantty-dev)
  (synopsis
   "Package to regroup dev targets for the project, documentation, and more")
  (allow_empty) ; In case the package is wip or attached to stanzas that dune doesn't see.
@@ -152,9 +153,9 @@
    (>= 0.7.3))
   (fpath-base
    (>= 0.2.2))
-  (git-pager
+  (pageantty
    (= :version))
-  (git-pager-tests
+  (pageantty-tests
    (= :version))
   (pp
    (>= 2.0.0))
