@@ -1,7 +1,7 @@
 (executable
  (name main)
  (public_name git-pager)
- (package git-pager-tests)
+ (package pageantty-tests)
  (libraries git_pager_cli pplumbing.cmdlang-cmdliner-runner)
  (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a)
  (instrumentation
