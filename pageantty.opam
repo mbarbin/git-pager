@@ -11,7 +11,7 @@ depends: [
   "dune" {>= "3.17"}
   "ocaml" {>= "4.14"}
   "pp" {>= "2.0.0"}
-  "pplumbing" {>= "0.0.13"}
+  "pplumbing" {>= "0.0.14"}
   "odoc" {with-doc}
 ]
 build: [
