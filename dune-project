@@ -87,11 +87,11 @@
   (stdio
    (>= v0.17))
   (volgo
-   (>= 0.0.17))
+   (>= 0.0.18))
   (volgo-git-unix
-   (>= 0.0.17))
+   (>= 0.0.18))
   (volgo-vcs
-   (>= 0.0.17))
+   (>= 0.0.18))
   (sherlodoc
    (and
     :with-doc
@@ -158,11 +158,11 @@
   (stdio
    (>= v0.17))
   (volgo
-   (>= 0.0.17))
+   (>= 0.0.18))
   (volgo-git-unix
-   (>= 0.0.17))
+   (>= 0.0.18))
   (volgo-vcs
-   (>= 0.0.17))
+   (>= 0.0.18))
   (sherlodoc
    (and
     :with-doc
