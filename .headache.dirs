@@ -1,0 +1,7 @@
+# List of directories for headache.sh
+# Add new directories below. Lines starting with '#' are ignored.
+example
+lib/git_pager/src
+lib/git_pager/test
+test/git_pager_cli/bin
+test/git_pager_cli/src
