@@ -6,7 +6,7 @@
 
 let main =
   Command.make
-    ~summary:"Run a pager and print its settings to stdout"
+    ~summary:"Run a pager and print its settings to stdout."
     (let open Command.Std in
      let+ () = Log_cli.set_config ()
      and+ () = Common_helpers.force_stdout_isatty_test in

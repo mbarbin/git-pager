@@ -50,14 +50,14 @@ let main =
       [ name ]
       Param.string
       ~docv:"REV"
-      ~doc:(Printf.sprintf "The %s revision for the diff" name)
+      ~doc:(Printf.sprintf "The %s revision for the diff." name)
   in
   Command.make
-    ~summary:"Send the output of git diff to the git pager"
+    ~summary:"Send the output of git diff to the git pager."
     (let+ () = Log_cli.set_config ()
      and+ () = Common_helpers.force_stdout_isatty_test
      and+ exit_code =
-       Arg.flag [ "exit-code" ] ~doc:"Supply the flag $(b,--exit-code) to git diff"
+       Arg.flag [ "exit-code" ] ~doc:"Supply the flag $(b,--exit-code) to git diff."
      and+ base = rev "base"
      and+ tip = rev "tip"
      and+ loop =

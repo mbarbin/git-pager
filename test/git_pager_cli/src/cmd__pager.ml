@@ -6,7 +6,7 @@
 
 let main =
   Command.make
-    ~summary:"Simulate a pager that quits after reading some number of lines"
+    ~summary:"Simulate a pager that quits after reading some number of lines."
     (let open Command.Std in
      let+ quit_after_n_lines =
        Arg.named_opt

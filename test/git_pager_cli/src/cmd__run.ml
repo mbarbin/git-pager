@@ -6,7 +6,7 @@
 
 let main =
   Command.make
-    ~summary:"Send an incrementing counter to the git pager"
+    ~summary:"Send an incrementing counter to the git pager."
     (let open Command.Std in
      let+ () = Log_cli.set_config ()
      and+ () = Common_helpers.force_stdout_isatty_test
@@ -35,7 +35,7 @@ let main =
            "The number of incremental steps the counter should be sent to the pager. \
             This argument is meant to test what happens when a pager is closed, with \
             pending writers that are not done writing to it."
-     and+ loop = Arg.flag [ "loop" ] ~doc:"Supersedes --steps and loop forever" in
+     and+ loop = Arg.flag [ "loop" ] ~doc:"Supersedes --steps and loop forever." in
      Git_pager.run ~f:(fun git_pager ->
        let write_end = Git_pager.write_end git_pager in
        With_return.with_return (fun { return } ->

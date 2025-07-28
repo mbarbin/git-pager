@@ -6,7 +6,7 @@
 
 let main =
   Command.group
-    ~summary:"git-pager"
+    ~summary:"A test cli for git-pager."
     [ "diff", Cmd__diff.main
     ; "pager", Cmd__pager.main
     ; "print-settings", Cmd__print_settings.main
