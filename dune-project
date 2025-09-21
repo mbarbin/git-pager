@@ -35,8 +35,10 @@
    (>= 4.14))
   (pp
    (>= 2.0.0))
-  (pplumbing
-   (>= 0.0.14))))
+  (pplumbing-err
+   (>= 0.0.16))
+  (pplumbing-pp-tty
+   (>= 0.0.16))))
 
 (package
  (name pageantty-tests)
@@ -48,6 +50,8 @@
    (>= v0.17))
   (cmdlang
    (>= 0.0.9))
+  (cmdlang-cmdliner-err-runner
+   (>= 0.0.16))
   (expect_test_helpers_core
    (>= v0.17))
   (fpath
@@ -58,8 +62,14 @@
    (= :version))
   (pp
    (>= 2.0.0))
-  (pplumbing
-   (>= 0.0.14))
+  (pplumbing-err
+   (>= 0.0.16))
+  (pplumbing-log
+   (>= 0.0.16))
+  (pplumbing-log-cli
+   (>= 0.0.16))
+  (pplumbing-pp-tty
+   (>= 0.0.16))
   (ppx_compare
    (>= v0.17))
   (ppx_enumerate
@@ -117,6 +127,8 @@
     (>= 2.8.3)))
   (cmdlang
    (>= 0.0.9))
+  (cmdlang-cmdliner-err-runner
+   (>= 0.0.16))
   (expect_test_helpers_core
    (>= v0.17))
   (fpath
@@ -129,8 +141,14 @@
    (= :version))
   (pp
    (>= 2.0.0))
-  (pplumbing
-   (>= 0.0.14))
+  (pplumbing-err
+   (>= 0.0.16))
+  (pplumbing-log
+   (>= 0.0.16))
+  (pplumbing-log-cli
+   (>= 0.0.16))
+  (pplumbing-pp-tty
+   (>= 0.0.16))
   (ppx_compare
    (>= v0.17))
   (ppx_enumerate
