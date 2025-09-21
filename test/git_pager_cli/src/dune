@@ -12,6 +12,14 @@
   -open
   Fpath_base
   -open
+  Pplumbing_pp_tty
+  -open
+  Pplumbing_err
+  -open
+  Pplumbing_log
+  -open
+  Pplumbing_log_cli
+  -open
   Stdio
   -open
   Cmdlang
@@ -24,10 +32,10 @@
   fpath-base
   git_pager
   pp
-  pplumbing.err
-  pplumbing.log
-  pplumbing.log-cli
-  pplumbing.pp-tty
+  pplumbing-err
+  pplumbing-log
+  pplumbing-log-cli
+  pplumbing-pp-tty
   shexp.process
   stdio
   unix
