@@ -1,3 +1,9 @@
+## 0.0.3 (2025-10-07)
+
+### Changed
+
+- Switch to `pplumbing-${SUB_PKG}` dependencies (#8, @mbarbin).
+
 ## 0.0.2 (2025-05-30)
 
 ### Added
