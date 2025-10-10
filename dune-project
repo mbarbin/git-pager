@@ -80,10 +80,6 @@
    (>= v0.17))
   (ppx_here
    (>= v0.17))
-  (ppx_js_style
-   (and
-    :with-dev-setup
-    (>= v0.17)))
   (ppx_let
    (>= v0.17))
   (ppx_sexp_conv
@@ -101,30 +97,21 @@
   (volgo-git-unix
    (>= 0.0.18))
   (volgo-vcs
-   (>= 0.0.18))
-  (sherlodoc
-   (and
-    :with-doc
-    (>= 0.2)))))
+   (>= 0.0.18))))
 
 (package
  (name pageantty-dev)
- (synopsis
-  "Package to regroup dev targets for the project, documentation, and more")
- (allow_empty) ; In case the package is wip or attached to stanzas that dune doesn't see.
+ (synopsis "Package to regroup dev targets, documentation, and more")
+ (allow_empty)
  (depends
   (ocaml
    (>= 5.2))
   (ocamlformat
-   (and
-    :with-dev-setup
-    (= 0.27.0)))
+   (= 0.27.0))
   (base
    (>= v0.17))
   (bisect_ppx
-   (and
-    :with-dev-setup
-    (>= 2.8.3)))
+   (>= 2.8.3))
   (cmdlang
    (>= 0.0.9))
   (cmdlang-cmdliner-err-runner
@@ -160,9 +147,7 @@
   (ppx_here
    (>= v0.17))
   (ppx_js_style
-   (and
-    :with-dev-setup
-    (>= v0.17)))
+   (>= v0.17))
   (ppx_let
    (>= v0.17))
   (ppx_sexp_conv
