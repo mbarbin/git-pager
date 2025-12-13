@@ -38,8 +38,9 @@ let main =
      and+ loop = Arg.flag [ "loop" ] ~doc:"Supersedes --steps and loop forever." in
      Git_pager.run ~f:(fun git_pager ->
        let write_end = Git_pager.write_end git_pager in
-       With_return.with_return (fun { return } ->
-         let index = ref 0 in
+       let index = ref 0 in
+       let exception Quit in
+       try
          while true do
            Unix.sleepf sleep;
            Int.incr index;
@@ -51,7 +52,8 @@ let main =
            if (not loop) && index >= steps
            then
              (* This line is covered but off due to unvisitable out-edge point. *)
-             return () [@coverage off]
-         done;
-         ())))
+             Stdlib.raise_notrace Quit [@coverage off]
+         done
+       with
+       | Quit -> ()))
 ;;
