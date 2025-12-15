@@ -6,7 +6,7 @@
 
 let () =
   Cmdlang_cmdliner_err_runner.run
-    Git_pager_cli.main
+    Git_pager_cli_test.main
     ~name:"git-pager"
     ~version:"%%VERSION%%"
 ;;

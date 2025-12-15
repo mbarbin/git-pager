@@ -1,6 +1,6 @@
 (library
- (name git_pager_cli)
- (public_name pageantty-tests.git_pager_cli)
+ (name git_pager_cli_test)
+ (package pageantty-tests)
  (flags
   :standard
   -w
