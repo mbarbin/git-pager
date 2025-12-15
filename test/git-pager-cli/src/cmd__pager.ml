@@ -4,6 +4,8 @@
 (*  SPDX-License-Identifier: MIT                                                 *)
 (*********************************************************************************)
 
+open! Import
+
 let main =
   Command.make
     ~summary:"Simulate a pager that quits after reading some number of lines."
@@ -28,16 +30,20 @@ let main =
      in
      (* We output a welcome line as a clue that this pager is indeed running. *)
      print_endline "Hello from the test pager!";
-     With_return.with_return (fun { return } ->
-       let index = ref 0 in
-       while true do
-         Int.incr index;
-         (match In_channel.input_line In_channel.stdin with
-          | None ->
-            (* This line is covered but off due to unvisitable out-edge point. *)
-            return () [@coverage off]
-          | Some line -> Out_channel.output_line Out_channel.stdout line);
-         Option.iter quit_after_n_lines ~f:(fun max -> if !index >= max then return ())
-       done);
+     let exception Quit in
+     let index = ref 0 in
+     (try
+        while true do
+          incr index;
+          (match In_channel.input_line In_channel.stdin with
+           | None ->
+             (* This line is covered but off due to unvisitable out-edge point. *)
+             Stdlib.raise_notrace Quit [@coverage off]
+           | Some line -> Out_channel.output_line Out_channel.stdout line);
+          Option.iter quit_after_n_lines ~f:(fun max ->
+            if !index >= max then Stdlib.raise_notrace Quit)
+        done
+      with
+      | Quit -> ());
      Err.exit exit_code)
 ;;

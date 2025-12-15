@@ -4,6 +4,8 @@
 (*  SPDX-License-Identifier: MIT                                                 *)
 (*********************************************************************************)
 
+open! Import
+
 let main =
   Command.make
     ~summary:"Send an incrementing counter to the git pager."
@@ -38,12 +40,13 @@ let main =
      and+ loop = Arg.flag [ "loop" ] ~doc:"Supersedes --steps and loop forever." in
      Git_pager.run ~f:(fun git_pager ->
        let write_end = Git_pager.write_end git_pager in
-       With_return.with_return (fun { return } ->
-         let index = ref 0 in
+       let index = ref 0 in
+       let exception Quit in
+       try
          while true do
            Unix.sleepf sleep;
-           Int.incr index;
-           Out_channel.output_line write_end (Int.to_string_hum !index);
+           incr index;
+           Out_channel.output_line write_end (Int.to_string !index);
            Out_channel.flush write_end;
            let index = !index in
            Option.iter raise_after_n_steps ~f:(fun n ->
@@ -51,7 +54,8 @@ let main =
            if (not loop) && index >= steps
            then
              (* This line is covered but off due to unvisitable out-edge point. *)
-             return () [@coverage off]
-         done;
-         ())))
+             Stdlib.raise_notrace Quit [@coverage off]
+         done
+       with
+       | Quit -> ()))
 ;;

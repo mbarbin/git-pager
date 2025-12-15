@@ -8,9 +8,7 @@
   -warn-error
   +a
   -open
-  Base
-  -open
-  Fpath_base
+  Fpath_sexp0
   -open
   Pplumbing_pp_tty
   -open
@@ -20,16 +18,14 @@
   -open
   Pplumbing_log_cli
   -open
-  Stdio
-  -open
   Cmdlang
   -open
   Volgo)
  (libraries
-  base
   cmdlang
+  dyn
   fpath
-  fpath-base
+  fpath-sexp0
   git_pager
   pp
   pplumbing-err
@@ -37,7 +33,6 @@
   pplumbing-log-cli
   pplumbing-pp-tty
   shexp.process
-  stdio
   unix
   volgo
   volgo-git-unix)
@@ -45,13 +40,4 @@
   (backend bisect_ppx))
  (lint
   (pps ppx_js_style -allow-let-operators -check-doc-comments))
- (preprocess
-  (pps
-   -unused-type-warnings=force
-   ppx_compare
-   ppx_enumerate
-   ppx_hash
-   ppx_here
-   ppx_let
-   ppx_sexp_conv
-   ppx_sexp_value)))
+ (preprocess no_preprocessing))

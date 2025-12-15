@@ -4,6 +4,8 @@
 (*  SPDX-License-Identifier: MIT                                                 *)
 (*********************************************************************************)
 
+open! Import
+
 let git_diff ~repo_root ~(git_pager : Git_pager.t) ~base ~tip ~exit_code =
   let process =
     Shexp_process.call_exit_status
@@ -74,17 +76,20 @@ let main =
          [@coverage off]
      in
      Git_pager.run ~f:(fun git_pager ->
-       With_return.with_return (fun { return } ->
+       let exception Quit in
+       try
          while true do
            (match git_diff ~repo_root ~git_pager ~base ~tip ~exit_code with
             | `Ok -> ()
             | `Quit ->
               (* This line is covered but off due to unvisitable out-edge point. *)
-              return () [@coverage off]);
+              Stdlib.raise_notrace Quit [@coverage off]);
            if loop
            then Unix.sleepf 0.5
            else
              (* This line is covered but off due to unvisitable out-edge point. *)
-             return () [@coverage off]
-         done)))
+             Stdlib.raise_notrace Quit [@coverage off]
+         done
+       with
+       | Quit -> ()))
 ;;
