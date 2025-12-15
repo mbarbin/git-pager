@@ -4,6 +4,8 @@
 (*  SPDX-License-Identifier: MIT                                                 *)
 (*********************************************************************************)
 
+open! Import
+
 let main =
   Command.make
     ~summary:"Simulate a pager that quits after reading some number of lines."
@@ -32,7 +34,7 @@ let main =
      let index = ref 0 in
      (try
         while true do
-          Int.incr index;
+          incr index;
           (match In_channel.input_line In_channel.stdin with
            | None ->
              (* This line is covered but off due to unvisitable out-edge point. *)

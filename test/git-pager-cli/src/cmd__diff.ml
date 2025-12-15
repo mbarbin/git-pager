@@ -4,6 +4,8 @@
 (*  SPDX-License-Identifier: MIT                                                 *)
 (*********************************************************************************)
 
+open! Import
+
 let git_diff ~repo_root ~(git_pager : Git_pager.t) ~base ~tip ~exit_code =
   let process =
     Shexp_process.call_exit_status

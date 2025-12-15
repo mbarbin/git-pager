@@ -46,17 +46,15 @@
  (depends
   (ocaml
    (>= 5.2))
-  (base
-   (>= v0.17))
   (cmdlang
    (>= 0.0.9))
   (cmdlang-cmdliner-err-runner
    (>= 0.0.16))
-  (expect_test_helpers_core
-   (>= v0.17))
+  (dyn
+   (>= 3.20))
   (fpath
    (>= 0.7.3))
-  (fpath-base
+  (fpath-sexp0
    (>= 0.2.2))
   (pageantty
    (= :version))
@@ -70,27 +68,11 @@
    (>= 0.0.16))
   (pplumbing-pp-tty
    (>= 0.0.16))
-  (ppx_compare
-   (>= v0.17))
-  (ppx_enumerate
-   (>= v0.17))
   (ppx_expect
-   (>= v0.17))
-  (ppx_hash
-   (>= v0.17))
-  (ppx_here
-   (>= v0.17))
-  (ppx_let
-   (>= v0.17))
-  (ppx_sexp_conv
-   (>= v0.17))
-  (ppx_sexp_value
    (>= v0.17))
   (ppxlib
    (>= 0.33))
   (shexp
-   (>= v0.17))
-  (stdio
    (>= v0.17))
   (volgo
    (>= 0.0.18))
@@ -108,19 +90,15 @@
    (>= 5.2))
   (ocamlformat
    (= 0.28.1))
-  (base
-   (>= v0.17))
   (bisect_ppx
    (>= 2.8.3))
   (cmdlang
    (>= 0.0.9))
   (cmdlang-cmdliner-err-runner
    (>= 0.0.16))
-  (expect_test_helpers_core
-   (>= v0.17))
   (fpath
    (>= 0.7.3))
-  (fpath-base
+  (fpath-sexp0
    (>= 0.2.2))
   (pageantty
    (= :version))
@@ -136,29 +114,13 @@
    (>= 0.0.16))
   (pplumbing-pp-tty
    (>= 0.0.16))
-  (ppx_compare
-   (>= v0.17))
-  (ppx_enumerate
-   (>= v0.17))
   (ppx_expect
    (>= v0.17))
-  (ppx_hash
-   (>= v0.17))
-  (ppx_here
-   (>= v0.17))
   (ppx_js_style
-   (>= v0.17))
-  (ppx_let
-   (>= v0.17))
-  (ppx_sexp_conv
-   (>= v0.17))
-  (ppx_sexp_value
    (>= v0.17))
   (ppxlib
    (>= 0.33))
   (shexp
-   (>= v0.17))
-  (stdio
    (>= v0.17))
   (volgo
    (>= 0.0.18))
@@ -167,6 +129,4 @@
   (volgo-vcs
    (>= 0.0.18))
   (sherlodoc
-   (and
-    :with-doc
-    (>= 0.2)))))
+   (>= 0.2))))

@@ -11,7 +11,7 @@ It is possible to get around this by disabling the pager via the GIT_PAGER
 variable.
 
   $ GIT_PAGER=cat git-pager print-settings
-  ((git_color_mode Auto) (should_enable_color false) (output_kind Other))
+  { git_color_mode = Auto; should_enable_color = false; output_kind = Other }
 
 Let's now initiate a Git repo.
 
@@ -21,7 +21,7 @@ Let's now initiate a Git repo.
 Let's try again:
 
   $ git-pager print-settings
-  ((git_color_mode Auto) (should_enable_color false) (output_kind Other))
+  { git_color_mode = Auto; should_enable_color = false; output_kind = Other }
 
 So, as we see here, [output_kind=Other]. This means that in the context of a
 cram test, stdout is not a tty. Having access to a tty is a precondition for
@@ -32,34 +32,34 @@ So, to allow exercising more of the code, we added a flag that makes the library
 behaves as if stdout was a tty.
 
   $ git-pager print-settings --force-stdout-isatty
-  ((git_color_mode Always) (should_enable_color true) (output_kind Pager))
+  { git_color_mode = Always; should_enable_color = true; output_kind = Pager }
 
 We monitor here the impact of the color mode on the settings:
 
   $ git-pager print-settings --color=never
-  ((git_color_mode Never) (should_enable_color false) (output_kind Other))
+  { git_color_mode = Never; should_enable_color = false; output_kind = Other }
 
   $ git-pager print-settings --color=never --force-stdout-isatty
-  ((git_color_mode Never) (should_enable_color false) (output_kind Pager))
+  { git_color_mode = Never; should_enable_color = false; output_kind = Pager }
 
   $ git-pager print-settings --color=auto
-  ((git_color_mode Auto) (should_enable_color false) (output_kind Other))
+  { git_color_mode = Auto; should_enable_color = false; output_kind = Other }
 
 The case below is an interesting case covered by the library. When the output is
 a tty and the color mode is auto, the library forces [Always] so git commands
 are correctly colored.
 
   $ git-pager print-settings --color=auto --force-stdout-isatty
-  ((git_color_mode Always) (should_enable_color true) (output_kind Pager))
+  { git_color_mode = Always; should_enable_color = true; output_kind = Pager }
 
   $ GIT_PAGER=cat git-pager print-settings --color=auto --force-stdout-isatty
-  ((git_color_mode Auto) (should_enable_color true) (output_kind Tty))
+  { git_color_mode = Auto; should_enable_color = true; output_kind = Tty }
 
   $ git-pager print-settings --color=always
-  ((git_color_mode Always) (should_enable_color true) (output_kind Other))
+  { git_color_mode = Always; should_enable_color = true; output_kind = Other }
 
   $ git-pager print-settings --color=always --force-stdout-isatty
-  ((git_color_mode Always) (should_enable_color true) (output_kind Pager))
+  { git_color_mode = Always; should_enable_color = true; output_kind = Pager }
 
 The setting of the [color.ui] is also meant to affect the settings, when it is
 not overridden via the command line. However, this would only be visible if
@@ -69,22 +69,22 @@ that in this test.
   $ git config --local color.ui never
 
   $ git-pager print-settings --force-stdout-isatty
-  ((git_color_mode Never) (should_enable_color false) (output_kind Pager))
+  { git_color_mode = Never; should_enable_color = false; output_kind = Pager }
 
   $ git-pager print-settings --force-stdout-isatty --color=always
-  ((git_color_mode Always) (should_enable_color true) (output_kind Pager))
+  { git_color_mode = Always; should_enable_color = true; output_kind = Pager }
 
   $ git config --local color.ui always
 
   $ git-pager print-settings --force-stdout-isatty
-  ((git_color_mode Always) (should_enable_color true) (output_kind Pager))
+  { git_color_mode = Always; should_enable_color = true; output_kind = Pager }
 
   $ git-pager print-settings --force-stdout-isatty --color=never
-  ((git_color_mode Never) (should_enable_color false) (output_kind Pager))
+  { git_color_mode = Never; should_enable_color = false; output_kind = Pager }
 
   $ git config --local color.ui auto
 
   $ git-pager print-settings --force-stdout-isatty
-  ((git_color_mode Always) (should_enable_color true) (output_kind Pager))
+  { git_color_mode = Always; should_enable_color = true; output_kind = Pager }
 
 Visualizing actual ansi colors produced by Git is done in the [diff.t] test.

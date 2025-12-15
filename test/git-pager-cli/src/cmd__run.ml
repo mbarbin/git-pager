@@ -4,6 +4,8 @@
 (*  SPDX-License-Identifier: MIT                                                 *)
 (*********************************************************************************)
 
+open! Import
+
 let main =
   Command.make
     ~summary:"Send an incrementing counter to the git pager."
@@ -43,8 +45,8 @@ let main =
        try
          while true do
            Unix.sleepf sleep;
-           Int.incr index;
-           Out_channel.output_line write_end (Int.to_string_hum !index);
+           incr index;
+           Out_channel.output_line write_end (Int.to_string !index);
            Out_channel.flush write_end;
            let index = !index in
            Option.iter raise_after_n_steps ~f:(fun n ->
