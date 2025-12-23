@@ -56,7 +56,7 @@ let git_pager_value =
        (* We shortcut git entirely when [GIT_PAGER=cat] so we can run this code in
           tests that do not have an actual git environment, such as in the dune
           [.sandbox/.git]. *)
-       Stdlib.Sys.getenv_opt "GIT_PAGER"
+       Sys.getenv_opt "GIT_PAGER"
      with
      | Some ("cat" as cat) -> cat
      | None | Some _ ->

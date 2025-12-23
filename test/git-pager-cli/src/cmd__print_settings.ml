@@ -44,9 +44,5 @@ let main =
        Out_channel.output_line
          write_end
          (Dyn.to_string
-            (Settings.to_dyn
-               { git_color_mode : [ `Auto | `Always | `Never ]
-               ; should_enable_color : bool
-               ; output_kind : [ `Tty | `Pager | `Other ]
-               }))))
+            (Settings.to_dyn { git_color_mode; should_enable_color; output_kind }))))
 ;;

@@ -31,7 +31,7 @@ let git_diff ~repo_root ~(git_pager : Git_pager.t) ~base ~tip ~exit_code =
     match result with
     | Exited i -> if i <> 0 then failwith (Printf.sprintf "Exited %d" i) else `Ok
     | Signaled i ->
-      if i <> Stdlib.Sys.sigpipe
+      if i <> Sys.sigpipe
       then failwith (Printf.sprintf "Signaled %d" i) [@coverage off]
       else `Quit
   with
@@ -83,12 +83,12 @@ let main =
             | `Ok -> ()
             | `Quit ->
               (* This line is covered but off due to unvisitable out-edge point. *)
-              Stdlib.raise_notrace Quit [@coverage off]);
+              raise_notrace Quit [@coverage off]);
            if loop
            then Unix.sleepf 0.5
            else
              (* This line is covered but off due to unvisitable out-edge point. *)
-             Stdlib.raise_notrace Quit [@coverage off]
+             raise_notrace Quit [@coverage off]
          done
        with
        | Quit -> ()))

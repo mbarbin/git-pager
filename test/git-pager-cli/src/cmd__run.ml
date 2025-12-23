@@ -54,7 +54,7 @@ let main =
            if (not loop) && index >= steps
            then
              (* This line is covered but off due to unvisitable out-edge point. *)
-             Stdlib.raise_notrace Quit [@coverage off]
+             raise_notrace Quit [@coverage off]
          done
        with
        | Quit -> ()))

@@ -38,10 +38,10 @@ let main =
           (match In_channel.input_line In_channel.stdin with
            | None ->
              (* This line is covered but off due to unvisitable out-edge point. *)
-             Stdlib.raise_notrace Quit [@coverage off]
+             raise_notrace Quit [@coverage off]
            | Some line -> Out_channel.output_line Out_channel.stdout line);
           Option.iter quit_after_n_lines ~f:(fun max ->
-            if !index >= max then Stdlib.raise_notrace Quit)
+            if !index >= max then raise_notrace Quit)
         done
       with
       | Quit -> ());
