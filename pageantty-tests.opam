@@ -12,7 +12,7 @@ depends: [
   "ocaml" {>= "5.2"}
   "cmdlang" {>= "0.0.9"}
   "cmdlang-cmdliner-err-runner" {>= "0.0.16"}
-  "dyn" {>= "3.20"}
+  "dyn" {>= "3.17"}
   "fpath" {>= "0.7.3"}
   "fpath-sexp0" {>= "0.2.2"}
   "pageantty" {= version}

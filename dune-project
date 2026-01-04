@@ -51,7 +51,7 @@
   (cmdlang-cmdliner-err-runner
    (>= 0.0.16))
   (dyn
-   (>= 3.20))
+   (>= 3.17))
   (fpath
    (>= 0.7.3))
   (fpath-sexp0
