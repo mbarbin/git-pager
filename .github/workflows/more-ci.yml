@@ -64,4 +64,4 @@ jobs:
         run: opam install ./pageantty.opam ./pageantty-tests.opam --deps-only --with-test
 
       - name: Build & Run tests
-        run: opam exec -- dune build @all @runtest -p pageantty,pageantty-tests
+        run: opam exec -- dune build @all @runtest --only-packages=pageantty,pageantty-tests
