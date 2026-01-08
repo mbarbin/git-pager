@@ -30,6 +30,7 @@ jobs:
           - 5.4.x
           - 5.3.x
           - 5.2.x
+          - 4.14.x
         exclude:
           # We exclude the combination already tested in the 'ci' workflow.
           - os: ubuntu-latest
@@ -57,11 +58,21 @@ jobs:
       - name: Edit dune-project
         run: opam exec -- ocaml .github/workflows/edit_dune_project_dot_ml "${{ matrix.ocaml-compiler }}"
 
+      - name: Environment setup
+        run: |
+          if [ "${{ matrix.ocaml-compiler }}" = "4.14.x" ]; then
+            echo "PACKAGES=pageantty" >> "$GITHUB_ENV"
+            echo "OPAM_PACKAGES=./pageantty.opam" >> "$GITHUB_ENV"
+          else
+            echo "PACKAGES=pageantty,pageantty-tests" >> "$GITHUB_ENV"
+            echo "OPAM_PACKAGES=./pageantty.opam ./pageantty-tests.opam" >> "$GITHUB_ENV"
+          fi
+
       # We build and run tests for a subset of packages. More tests are run in
       # the development workflow and as part of the main CI job. These are the
       # tests that are checked for every combination of os and ocaml-compiler.
       - name: Install dependencies
-        run: opam install ./pageantty.opam ./pageantty-tests.opam --deps-only --with-test
+        run: opam install ${{ env.OPAM_PACKAGES }} --deps-only --with-test
 
       - name: Build & Run tests
-        run: opam exec -- dune build @all @runtest --only-packages=pageantty,pageantty-tests
+        run: opam exec -- dune build @all @runtest --only-packages=${{ env.PACKAGES }}
