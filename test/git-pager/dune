@@ -2,7 +2,7 @@
  (name git_pager_test)
  (package pageantty-tests)
  (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a)
- (libraries git_pager)
+ (libraries)
  (inline_tests)
  (instrumentation
   (backend bisect_ppx))
