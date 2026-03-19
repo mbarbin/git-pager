@@ -19,9 +19,9 @@ type t
 
     Example:
     {[
-      Git_pager.run ~f:(fun pager ->
-        let write_end = Git_pager.write_end pager in
-        Printf.fprintf write_end "Hello, pager!\n")
+    Git_pager.run ~f:(fun pager ->
+      let write_end = Git_pager.write_end pager in
+      Printf.fprintf write_end "Hello, pager!\n")
     ]} *)
 val run : f:(t -> 'a) -> 'a
 
@@ -46,12 +46,12 @@ val write_end : t -> Out_channel.t
 
     Example:
     {[
-      let git_diff_flags git_pager =
-        match Git_pager.git_color_mode git_pager with
-        | `Auto -> []
-        | `Always -> [ "--color=always" ]
-        | `Never -> [ "--color=never" ]
-      ;;
+    let git_diff_flags git_pager =
+      match Git_pager.git_color_mode git_pager with
+      | `Auto -> []
+      | `Always -> [ "--color=always" ]
+      | `Never -> [ "--color=never" ]
+    ;;
     ]} *)
 val git_color_mode : t -> [ `Auto | `Always | `Never ]
 
