@@ -4,9 +4,12 @@
 (*  SPDX-License-Identifier: MIT                                                 *)
 (*********************************************************************************)
 
+let version =
+  match Build_info.V1.version () with
+  | None -> "n/a"
+  | Some v -> Build_info.V1.Version.to_string v
+;;
+
 let () =
-  Cmdlang_cmdliner_err_runner.run
-    Git_pager_cli_test.main
-    ~name:"git-pager"
-    ~version:"%%VERSION%%"
+  Cmdlang_cmdliner_err_runner.run Git_pager_cli_test.main ~name:"git-pager" ~version
 ;;

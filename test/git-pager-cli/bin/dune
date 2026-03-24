@@ -2,7 +2,7 @@
  (name main)
  (public_name git-pager)
  (package pageantty-tests)
- (libraries cmdlang-cmdliner-err-runner git_pager_cli_test)
+ (libraries cmdlang-cmdliner-err-runner dune-build-info git_pager_cli_test)
  (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a)
  (instrumentation
   (backend bisect_ppx))
