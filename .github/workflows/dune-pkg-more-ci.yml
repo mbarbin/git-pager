@@ -31,8 +31,8 @@ jobs:
           - "4.14"
         include:
           - os: ubuntu-latest
-            dune-version: "3.23.0"
-            dune-digest: "sha256:5588605a056545459833b10fcbfffa240841fa440d92862bfe94a4c8bfc52400"
+            dune-version: "3.23.1"
+            dune-digest: "sha256:9cbcc7fe3b7df76f862c9ab73c241a6106b799765bdd85c75d2e31dc5f410d07"
         exclude:
           # Exclude the combination already tested in the main ci workflow.
           - os: ubuntu-latest
